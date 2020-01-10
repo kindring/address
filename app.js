@@ -12,6 +12,8 @@ let router = require('./router/router');//主页的路由
 //     extension:'ejs'/* 应用ejs模板引擎  ,这种方式后缀为ejs*/
 // }));
 //配置ejs模板引擎
+
+
 app.use(views('views',{map:{html:'ejs'}}));//这样配置也行  这种配置必须带后缀
 
 
@@ -37,4 +39,4 @@ app.use(router.routes())
 
 app.listen(8080,()=>{
     console.log('server is running . . . . . .');
-})
+});
