@@ -37,8 +37,10 @@ async function getProvince(){
     let [error,result] = await aquery(conn,sql,value).then(result=>[null,result]).catch(error=>[error,null]);
     return new Promise((resolve,reject)=>{
         if(error){
+            conn.release();
             reject(error);
         }else{
+            conn.release();
             resolve(result);
         }
     });
@@ -55,8 +57,10 @@ function getCity(province){
             let value = [province];
             conn.query(sql,value,function(err,result){
                 if(err){
+                    conn.release();
                     return reject(err);
                 }
+                conn.release();
                 resolve(result);
             })
 
@@ -75,8 +79,10 @@ function getArea(city){
             let value = [city];
             conn.query(sql,value,function(err,result){
                 if(err){
+                    conn.release();
                     return reject(err);
                 }
+                conn.release();
                 resolve(result);
             })
 
@@ -95,8 +101,10 @@ function getStreet(area){
             let value = [area];
             conn.query(sql,value,function(err,result){
                 if(err){
+                    conn.release();
                     return reject(err);
                 }
+                conn.release();
                 resolve(result);
             })
 
